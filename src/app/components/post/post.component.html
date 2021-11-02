@@ -1,1 +1,8 @@
-<p>post works!</p>
+<div class="d-flex justify-content-center my-4" >
+    <div class="w-50 shadow p-4" style="border-radius: .5em;">
+        <app-post-header [usuario] = "post.usuario" [fecha] = "post.fecha" [idPost] = "post.id"></app-post-header>
+        <app-post-body [contenidoPost] = "post.contenido"></app-post-body>
+        <app-post-footer [idPost] = "post.id"></app-post-footer>
+        <app-post-comentarios [comentarios] = "post.comentarios" [idPost] = "post.id"></app-post-comentarios>
+    </div>
+</div>

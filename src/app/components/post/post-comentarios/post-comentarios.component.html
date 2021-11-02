@@ -1,0 +1,10 @@
+<div class="px-3">
+    <button class="btn btn-outline-primary w-100 shadow-none" (click)="desplegarComentarios()">
+        Ver comentarios
+    </button>
+</div>
+<div class="overflow-auto" [attr.idPost] = "idPost">
+    <div class="collapse">
+        <app-comentario *ngFor = "let comentario of comentarios" [comentario] = "comentario"></app-comentario>
+    </div>
+</div>
