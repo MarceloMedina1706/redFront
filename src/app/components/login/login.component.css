@@ -1,0 +1,34 @@
+.a-olv{
+    text-decoration: none;
+}
+
+.a-olv:hover{
+    text-decoration: underline;
+}
+
+.btn-crear{
+    background-color: rgb(63, 188, 59);
+    font-weight: 600;
+    border-radius: .5em;
+}
+
+.btn-crear:hover{
+    background-color: rgb(60, 156, 57);
+}
+
+.btn-login{
+    background-color: rgb(247, 103, 48);
+    font-weight: 600;
+}
+
+.btn-login:hover{
+    background-color: rgb(232, 103, 54);
+}
+
+.p-pre{
+    font-size: 1.5em;
+    font-weight: 600;
+    position: relative;
+    margin-top: -15%;
+    margin-left: 15%;
+}

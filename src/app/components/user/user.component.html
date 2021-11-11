@@ -1,0 +1,15 @@
+<app-nav></app-nav>
+
+<div class="d-flex justify-content-center" style="margin-top: 5%;">
+    <div class="shadow w-75" style="margin-top: 1%; border-radius: .5em;">
+        <div class="p-4">
+            <div class="d-flex justify-content-center">
+                <!--<img src="img/ej2.jpg" class="w-25">-->
+            </div>
+            
+            <p class="fs-2 text-center">{{user.name + " " + user.lastName}}</p>
+        </div>
+        <app-user-profile *ngIf="profile"></app-user-profile>
+        <app-user-follow *ngIf="!profile" [idUser] = "idUser"></app-user-follow>
+    </div>
+</div>

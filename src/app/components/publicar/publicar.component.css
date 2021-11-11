@@ -1,0 +1,27 @@
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-foto{
+    background-color: rgb(11, 9, 114);
+    width: 13em;
+    padding: .5em;
+    color: white;
+    border-radius: .5rem;
+    outline: none;
+    text-align: center;
+}
+
+.btn-foto:hover{
+    background-color: rgb(9, 7, 70);
+}

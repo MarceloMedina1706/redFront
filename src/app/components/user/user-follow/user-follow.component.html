@@ -1,0 +1,4 @@
+<div class="d-flex justify-content-center mb-4">
+    <button class="btn btn-outline-secondary w-40 shadow-none" *ngIf="!following" (click)="follow()">Seguir</button>
+    <button class="btn btn-outline-secondary w-40 shadow-none active" *ngIf="following" (click)="follow()">Siguiendo</button>
+</div>

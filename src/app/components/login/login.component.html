@@ -1,0 +1,36 @@
+<div class="mt-c" style="margin-top: 10%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 mt-4" style="width: 40%;">
+                <!--<img src="img/logo2.png" class="w-100">-->
+                <p class="p-pre">
+                    ElaisNet te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.
+                </p>
+            </div>
+            <div class="col-5 offset-2">
+                <div class="bg-white w-100 p-3 shadow" style="border-radius: .5em;">
+                    <form class="" #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+                        <input type="email" class="form-control p-3" name="email" placeholder="Correo electrónico" autocomplete="off" [(ngModel)]="email" required>
+                        <input type="password" class="form-control mt-3 p-3" name="password" placeholder="Contraseña" [(ngModel)]="password" required>
+                        <input type="submit" class="btn btn-login text-white mt-3 p-2 w-100 fs-4" value="Iniciar sesión" [disabled]="!f.valid">
+                    </form>
+
+                    <div class="text-center mt-1 p-3 border-bottom">
+                        <a href="#" class="a-olv">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-3">
+                        <!--<button class="btn btn-crear p-3">
+                            <a href="registrarte.html" class="text-center text-decoration-none text-white">Crear cuenta nueva</a>
+                        </button>-->
+                        <a href="registrarte.html">
+                            <button class="btn btn-crear text-white p-3">
+                                Crear cuenta nueva
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

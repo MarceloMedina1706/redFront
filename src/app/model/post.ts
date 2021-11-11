@@ -2,18 +2,20 @@ import { Comentario } from "./comentario";
 
 export class Post {
 
-    id: number = 0;
-    usuario: string = "";
+    idUser: number = 0;
+    namesUser: string = "";
+    idPost: number = 0;
     fecha: string = "";
     contenido: string = "";
-    comentarios : Comentario[] = [];
+    foto: string = "";
 
-    constructor(id:number, usuario: string, fecha: string, contenido: string, comentarios: Comentario[]){
-        this.id = id;
-        this.usuario = usuario;
-        this.fecha = fecha;
+    constructor(idUser:number, namesUser: string,idPost:number, contenido: string, foto: string, fecha: string ){
+        this.idUser = idUser;
+        this.namesUser = namesUser;
+        this.idPost = idPost;
         this.contenido = contenido;
-        this.comentarios = comentarios;
+        this.foto = foto;
+        this.fecha = fecha;
     }
 
 }

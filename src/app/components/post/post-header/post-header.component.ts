@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-post-header',
@@ -7,7 +9,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PostHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private tokenService: TokenService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +25,13 @@ export class PostHeaderComponent implements OnInit {
     alert("ELIMINAR POST: " + this._idPost);
   }
 
-  
+  redUser(): void{
+    if(this.tokenService.getIdUser() != this.idUser)
+      this.router.navigate(['/user/' + this.idUser]);
+    else
+      this.router.navigate(['/user']);
+  }
+
   private _usuario: string = "";
   public get usuario(): string {
     return this._usuario;
@@ -35,7 +46,11 @@ export class PostHeaderComponent implements OnInit {
     return this._fecha;
   }
   @Input() public set fecha(value: string) {
-    this._fecha = value;
+    
+    let dia = value.split("T")[0];
+    let hora = value.split("T")[1].split(":")[0] +":"+ value.split("T")[1].split(":")[1];
+    
+    this._fecha = dia + " " + hora;
   }
 
   private _idPost: number = 0;
@@ -44,6 +59,14 @@ export class PostHeaderComponent implements OnInit {
   }
   @Input() public set idPost(value: number) {
     this._idPost = value;
+  }
+
+  private _iduser: number;
+  public get idUser(): number {
+    return this._iduser;
+  }
+  @Input() public set idUser(value: number) {
+    this._iduser = value;
   }
 
 }
