@@ -29,12 +29,16 @@ export class PublicarComponent implements OnInit {
   publicar(): void {
     
     if(this.tokenService.isLogged()){
-      const postDto = new PostDto(this.contenido, this.imagen);
-      this.postService.savePost(postDto).subscribe(
-        data => {
-          this.sendPost(data);
-        }
-      );
+      if(this.contenido != ""){
+        const buttonPub = document.querySelector(".btn-danger");
+        $(buttonPub).prop("disabled", true);
+        const postDto = new PostDto(this.contenido, this.imagen);
+        this.postService.savePost(postDto).subscribe(
+          data => {
+            this.sendPost(data);
+          }
+        );
+      }
     }else{
       this.router.navigate(['/login']);
     }
@@ -44,20 +48,8 @@ export class PublicarComponent implements OnInit {
 
   sendPost(post:Post) {
     this.postEvent.emit(post);
+    this.contenido = "";
+    const buttonPub = document.querySelector(".btn-danger");
+    $(buttonPub).prop("disabled", false);
   }
-
-  /*
-  message: string = "Hola Mundo!"
-
-  @Output() messageEvent = new EventEmitter<string>();
-
-  constructor() { }
-
-  sendMessage() {
-    this.messageEvent.emit(this.message)
-  }
-  
-  
-  
-  */
 }

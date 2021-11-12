@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PostServiceService } from 'src/app/service/post-service.service';
 
 @Component({
@@ -15,8 +15,13 @@ export class PostFooterComponent implements OnInit {
   
 
   @Input() active: boolean;
+  @Output() displayEvent = new EventEmitter<number>();
 
   ngOnInit(): void {
+  }
+
+  sendDisplay(): void {
+    this.displayEvent.emit(this._idPost);
   }
 
   private _idPost: number = 0;

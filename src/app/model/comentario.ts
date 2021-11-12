@@ -1,12 +1,22 @@
 export class Comentario {
 
-    usuario: string = "";
-    fecha: string = "";
-    comentario: string = "";
+    usernames: string;
+    fecha: string;
+    contenido: string;
+    idUser: number;
+    idPost: number;
 
-    constructor(usuario: string, fecha: string, comentario: string){
-        this.usuario = usuario;
+    constructor(
+        usernames: string,
+        fecha: string,
+        contenido: string,
+        idUser: number,
+        idPost: number
+    ){
+        this.usernames = usernames;
         this.fecha = fecha;
-        this.comentario = comentario;
+        this.contenido = contenido;
+        this.idUser = idUser;
+        this.idPost = idPost;
     }
 }

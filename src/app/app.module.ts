@@ -21,6 +21,8 @@ import { interceptorProvider } from './interceptor/interceptor.service';
 import { UserComponent } from './components/user/user.component';
 import { UserFollowComponent } from './components/user/user-follow/user-follow.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -39,13 +41,15 @@ import { UserProfileComponent } from './components/user/user-profile/user-profil
     RegistrationComponent,
     UserComponent,
     UserFollowComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

@@ -4,11 +4,13 @@
             [fecha] = "post.fecha" 
             [idPost] = "post.idPost" 
             [usuario] = "post.namesUser" 
-            [idUser] = "post.idUser"></app-post-header>
+            [idUser] = "post.idUser"
+            (delEvent)="receiveDel()"></app-post-header>
         <app-post-body [contenidoPost] = "post.contenido"></app-post-body>
         <app-post-footer 
             [idPost] = "post.idPost"
-            [active] = "like"></app-post-footer>
+            [active] = "like"
+            (displayEvent)="receiveDisplay($event)"></app-post-footer>
         <app-post-comentarios [idPost] = "post.idPost"></app-post-comentarios>
     </div>
 </div>

@@ -4,11 +4,9 @@
 
 <app-publicar (postEvent)="receivePost($event)"></app-publicar>
 
-<app-post *ngFor="let post of posts" [post] = "post"></app-post>
+<app-post *ngFor="let post of posts" 
+            [post] = "post"
+            (displayEvent)="receiveDisplay($event)"
+            (delEvent)="receiveDel($event)"></app-post>
 
-<!-- Modal --><!--
-<p-dialog header="Title" [(visible)]="display">
-    Content
-</p-dialog>-->
-
-<button type="button" (click)="showDialog()" icon="pi pi-info-circle" label="Show"></button>
+<app-modal #modal (sendCommentEvent)="receiveComment($event)"></app-modal>

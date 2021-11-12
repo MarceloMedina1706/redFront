@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/service/token.service';
 
@@ -21,8 +21,9 @@ export class PostHeaderComponent implements OnInit {
     alert("EDITAR POST: " + this._idPost);
   }
 
+  @Output() delEvent = new EventEmitter<void>();
   eliminarPost(): void{
-    alert("ELIMINAR POST: " + this._idPost);
+    this.delEvent.emit();
   }
 
   redUser(): void{

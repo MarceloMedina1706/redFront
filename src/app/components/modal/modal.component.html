@@ -1,0 +1,12 @@
+<ng-template #contenido let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Titulo modal</h4>
+    </div>
+    <div class="modal-body">
+        <textarea class="form-control shadow-none" placeholder="Deja tu comentario acá" style="resize: none;" [(ngModel)]="comment"></textarea>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger shadow-none w-25" (click)="closeModal()">Cancelar</button>
+        <button type="button" class="btn btn-success shadow-none w-25" (click)="sendComment()">Ok!</button>
+    </div>
+</ng-template>
