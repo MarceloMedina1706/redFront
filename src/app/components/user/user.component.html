@@ -13,3 +13,15 @@
         <app-user-follow *ngIf="!profile" [idUser] = "idUser"></app-user-follow>
     </div>
 </div>
+
+<app-publicar (postEvent)="receivePost($event)"></app-publicar>
+
+<app-post *ngFor="let post of posts" 
+            [post] = "post"
+            (displayEvent)="receiveDisplay($event)"
+            (updEvent)="receiveDisplay($event)"
+            (delEvent)="receiveDel($event)"></app-post>
+
+<app-modal #modal 
+            (sendCommentEvent)="receiveComment($event)"
+            (sendUpdatePostEvent)="receiveUpd($event)"></app-modal>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ResultadoComponent } from './components/resultado/resultado.component';
 import { UserComponent } from './components/user/user.component';
 import { LoginGuardGuard } from './guards/login-guard.guard';
 import { UserGuard } from './guards/user.guard';
@@ -13,11 +14,12 @@ const routes: Routes = [
   {path: '', component: InicioComponent, canActivate: [UserGuard]},
   {path: 'user', component: UserComponent, canActivate: [UserGuard]},
   {path: 'user/:id', component: UserComponent, canActivate: [UserGuard]},
+  {path: 'result/:search', component: ResultadoComponent, canActivate: [UserGuard]},
   {path: 'modal', component: ModalComponent, canActivate: [UserGuard]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

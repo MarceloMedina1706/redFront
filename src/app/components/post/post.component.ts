@@ -29,6 +29,12 @@ export class PostComponent implements OnInit {
     this.displayEvent.emit($event);
   }
 
+  @Output() updEvent = new EventEmitter<string>();
+  receiveUpd(): void {
+    let emit = this._post.idPost + ".updatePost";
+    this.updEvent.emit(emit);
+  }
+
   @Output() delEvent = new EventEmitter<number>();
   receiveDel(): void{
     this.postService.deletePost(this._post.idPost).subscribe(

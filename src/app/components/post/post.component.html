@@ -1,12 +1,13 @@
 <div class="d-flex justify-content-center my-4" >
     <div class="w-50 shadow p-4" style="border-radius: .5em;">
         <app-post-header 
-            [fecha] = "post.fecha" 
-            [idPost] = "post.idPost" 
-            [usuario] = "post.namesUser" 
-            [idUser] = "post.idUser"
-            (delEvent)="receiveDel()"></app-post-header>
-        <app-post-body [contenidoPost] = "post.contenido"></app-post-body>
+            [fecha]="post.fecha" 
+            [idPost]="post.idPost" 
+            [usuario]="post.namesUser" 
+            [idUser]="post.idUser"
+            (delEvent)="receiveDel()"
+            (updEvent)="receiveUpd()"></app-post-header>
+        <app-post-body [contenidoPost]="post.contenido"></app-post-body>
         <app-post-footer 
             [idPost] = "post.idPost"
             [active] = "like"

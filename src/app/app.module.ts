@@ -23,6 +23,8 @@ import { UserFollowComponent } from './components/user/user-follow/user-follow.c
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalComponent } from './components/modal/modal.component';
+import { ResultadoComponent } from './components/resultado/resultado.component';
+import { ItemResultadoComponent } from './components/item-resultado/item-resultado.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ModalComponent } from './components/modal/modal.component';
     UserComponent,
     UserFollowComponent,
     UserProfileComponent,
-    ModalComponent
+    ModalComponent,
+    ResultadoComponent,
+    ItemResultadoComponent
   ],
   imports: [
     BrowserModule,

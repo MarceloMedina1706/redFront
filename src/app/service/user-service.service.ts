@@ -26,11 +26,14 @@ export class UserServiceService {
   }
 
   unFollowUser(id: number): Observable<any>{
-    console.log("DENTRO DEL UNFOLLOW   id: " + id);
     return this.httpClient.post<any>(this._postURL + `unFollow/${id}`, null);
   }
 
   verFollowUser(id: number): Observable<boolean>{
     return this.httpClient.post<boolean>(this._postURL + `verFollow/${id}`, null);
+  }
+
+  getSearch(search: string): Observable<User[]>{
+    return this.httpClient.post<User[]>(this._postURL + 'search', search);
   }
 }

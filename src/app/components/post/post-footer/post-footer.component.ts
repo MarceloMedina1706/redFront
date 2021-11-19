@@ -15,13 +15,14 @@ export class PostFooterComponent implements OnInit {
   
 
   @Input() active: boolean;
-  @Output() displayEvent = new EventEmitter<number>();
+  @Output() displayEvent = new EventEmitter<string>();
 
   ngOnInit(): void {
   }
 
   sendDisplay(): void {
-    this.displayEvent.emit(this._idPost);
+    let emit = this._idPost + ".comment";
+    this.displayEvent.emit(emit);
   }
 
   private _idPost: number = 0;

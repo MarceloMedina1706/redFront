@@ -17,8 +17,11 @@ export class PostHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  action: boolean = false;
+
+  @Output() updEvent = new EventEmitter<void>();
   editarPost(): void{
-    alert("EDITAR POST: " + this._idPost);
+    this.updEvent.emit();
   }
 
   @Output() delEvent = new EventEmitter<void>();
@@ -68,6 +71,7 @@ export class PostHeaderComponent implements OnInit {
   }
   @Input() public set idUser(value: number) {
     this._iduser = value;
+    if(this.tokenService.getIdUser() == this._iduser) this.action = true;
   }
 
 }

@@ -23,8 +23,20 @@ export class PostServiceService {
     return this.httpClient.get<Post[]>(this._postURL + 'posts');
   }
 
+  getPostsUserProfile(): Observable<Post[]> {
+    return this.httpClient.post<Post[]>(this._postURL + 'getPostsByUser', null);
+  }
+
+  getPostsByUser(idUser: number): Observable<Post[]> {
+    return this.httpClient.post<Post[]>(this._postURL + `getPostsByUser/${idUser}`, null);
+  }
+
   savePost(postDto: PostDto): Observable<Post> {
     return this.httpClient.post<Post>(this._postURL + 'savePost', postDto);
+  }
+
+  updatePost(idPost: number, postDto: PostDto): Observable<boolean> {
+    return this.httpClient.post<boolean>(this._postURL + `updatePost/${idPost}`, postDto);
   }
 
   deletePost(idPost: number): Observable<boolean> {

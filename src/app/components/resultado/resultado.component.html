@@ -1,0 +1,13 @@
+<app-nav></app-nav>
+
+<div style="margin-top: 2%; height: 1em;" class="bg-success"></div>
+
+<div class="d-flex justify-content-center my-4 mt-5">
+    <div class="w-50 shadow p-4" style="border-radius: .5em;">
+        <app-item-resultado *ngFor="let item of result" 
+            [name]="item.name"
+            [lastName]="item.lastName"
+            [idUser]="item.idUser">
+        </app-item-resultado>
+    </div>
+</div>
