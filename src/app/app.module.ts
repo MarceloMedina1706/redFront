@@ -14,7 +14,7 @@ import { NavSearchComponent } from './components/nav/nav-search/nav-search.compo
 import { InicioComponent } from './components/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PublicarComponent } from './components/publicar/publicar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { interceptorProvider } from './interceptor/interceptor.service';
@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalComponent } from './components/modal/modal.component';
 import { ResultadoComponent } from './components/resultado/resultado.component';
 import { ItemResultadoComponent } from './components/item-resultado/item-resultado.component';
+import { FollowSectionComponent } from './components/follow-section/follow-section.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +47,15 @@ import { ItemResultadoComponent } from './components/item-resultado/item-resulta
     UserProfileComponent,
     ModalComponent,
     ResultadoComponent,
-    ItemResultadoComponent
+    ItemResultadoComponent,
+    FollowSectionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule
   ],
   providers: [interceptorProvider],

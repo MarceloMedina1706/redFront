@@ -14,6 +14,7 @@ export class PostComponent implements OnInit {
     private postService: PostServiceService
   ) { }
   
+  @Input() actions: boolean;
 
   like: boolean=false;
   ngOnInit(): void {

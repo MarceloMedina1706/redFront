@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center">
+    <div class="shadow w-75 p-3" style="border-radius: .5em;">
+        <ul class="nav nav-tabs justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link text-decoration-none text-dark fs-4" style="cursor: pointer;" id="following" (click)="onFollowing()">Seguidos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-decoration-none text-dark fs-4" style="cursor: pointer;" id="followers" (click)="onMyFollowers()">Seguidores</a>
+          </li>
+        </ul>
+        
+        <div class="w-50">
+            <app-item-resultado *ngFor="let f of follow" 
+                                [name]="f.name"
+                                [lastName]="f.lastName"
+                                [idUser]="f.idUser"></app-item-resultado>
+        </div>
+        
+    </div>
+</div>

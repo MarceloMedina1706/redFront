@@ -8,10 +8,13 @@
             (delEvent)="receiveDel()"
             (updEvent)="receiveUpd()"></app-post-header>
         <app-post-body [contenidoPost]="post.contenido"></app-post-body>
-        <app-post-footer 
+        <app-post-footer
+            *ngIf="actions" 
             [idPost] = "post.idPost"
             [active] = "like"
             (displayEvent)="receiveDisplay($event)"></app-post-footer>
-        <app-post-comentarios [idPost] = "post.idPost"></app-post-comentarios>
+        <app-post-comentarios 
+            *ngIf="actions"
+            [idPost] = "post.idPost"></app-post-comentarios>
     </div>
 </div>

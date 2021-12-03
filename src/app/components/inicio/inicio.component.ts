@@ -33,6 +33,7 @@ export class InicioComponent implements OnInit {
   }
 
   posts: Post[] = [];
+  actions:boolean = true;
 
   //--------------------------------------------------------------
   

@@ -21,7 +21,10 @@ export class UserComponent implements OnInit {
   profile: boolean = false;
   idUser: number;
   posts: Post[];
+  actions: boolean = false;
+  showFollowSection = false;
 
+  //================CONSTRUCTOR====================================================================================
   constructor(
     private userService: UserServiceService,
     private postService: PostServiceService,
@@ -29,7 +32,8 @@ export class UserComponent implements OnInit {
     private router: Router,
     private tokenService: TokenService
     ) { }
-
+  //================FIN CONSTRUCTOR====================================================================================
+  //================ON INIT====================================================================================
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
     if(id == null){
@@ -38,6 +42,7 @@ export class UserComponent implements OnInit {
           this.user = data;
           this.profile = this.isUserProfile(data.email);
           this.getPosts();
+          this.actions = true;
         }
       );
     }else{
@@ -47,14 +52,14 @@ export class UserComponent implements OnInit {
           this.profile = this.isUserProfile(data.email);
           this.idUser = data.idUser;
           if(this.profile) this.router.navigate(["/user"]);
+          this.canActions();
           this.getPosts();
         }
       );
     }
-
-    
   }
-
+  //================FIN ON INIT====================================================================================
+  //================RECEIVE METHODS====================================================================================
   @ViewChild("modal") appModal: ModalComponent;
   receiveDisplay($event): void{
     let idPost = $event.split(".")[0];
@@ -76,7 +81,6 @@ export class UserComponent implements OnInit {
     this.removePost($event);
   }
   
-  //================ACTIONS MODAL====================================================================================
   receiveComment($event): void {
     let commentDTO = $event;
     this.postService.commentPost(commentDTO).subscribe(
@@ -97,7 +101,10 @@ export class UserComponent implements OnInit {
     );
   }
   
-  //================FIN ACTION MODAL=================================================================================
+  receiveShowFollowSection($event): void{
+    this.showFollowSection = $event;
+  }
+  //================FIN RECEIVE METHODS=================================================================================
 
 
   private getPosts(): void{
@@ -114,6 +121,14 @@ export class UserComponent implements OnInit {
         }
       );
     }
+  }
+
+  private canActions(): void{
+    this.userService.verFollowUser(this.idUser).subscribe(
+      data => {
+        data ? this.actions = true : this.actions = false;
+      }
+    );
   }
 
   private removePost(idPost: number): void{

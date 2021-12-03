@@ -28,7 +28,6 @@ export class UserFollowComponent implements OnInit {
       this.userService.followUser(this._idUser).subscribe();
     }else{
 
-      alert("DENTRO DE ELSE: " + this._idUser);
       this.userService.unFollowUser(this._idUser).subscribe();
     }
   }

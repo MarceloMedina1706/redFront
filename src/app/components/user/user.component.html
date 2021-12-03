@@ -9,19 +9,29 @@
             
             <p class="fs-2 text-center">{{user.name + " " + user.lastName}}</p>
         </div>
-        <app-user-profile *ngIf="profile"></app-user-profile>
+        <app-user-profile *ngIf="profile"
+                           (sendShowFollowSection)="receiveShowFollowSection($event)"></app-user-profile>
         <app-user-follow *ngIf="!profile" [idUser] = "idUser"></app-user-follow>
     </div>
 </div>
 
-<app-publicar (postEvent)="receivePost($event)"></app-publicar>
+<div class="w-100" *ngIf="!showFollowSection else templateFollowSection">
 
-<app-post *ngFor="let post of posts" 
-            [post] = "post"
-            (displayEvent)="receiveDisplay($event)"
-            (updEvent)="receiveDisplay($event)"
-            (delEvent)="receiveDel($event)"></app-post>
+    <app-publicar *ngIf="profile" (postEvent)="receivePost($event)" ></app-publicar>
 
-<app-modal #modal 
-            (sendCommentEvent)="receiveComment($event)"
-            (sendUpdatePostEvent)="receiveUpd($event)"></app-modal>
+    <app-post *ngFor="let post of posts" 
+                [post] = "post"
+                [actions]="actions"
+                (displayEvent)="receiveDisplay($event)"
+                (updEvent)="receiveDisplay($event)"
+                (delEvent)="receiveDel($event)"></app-post>
+
+    <app-modal #modal 
+                (sendCommentEvent)="receiveComment($event)"
+                (sendUpdatePostEvent)="receiveUpd($event)"></app-modal>
+
+</div>
+
+<ng-template #templateFollowSection>
+    <app-follow-section></app-follow-section>
+</ng-template>

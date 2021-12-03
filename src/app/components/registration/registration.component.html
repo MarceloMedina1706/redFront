@@ -1,1 +1,98 @@
-<p>regristation works!</p>
+<div class="container mt-3">
+    <div class="row p-3 text-center border-bottom">
+        <h1>Registrarte</h1>	
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSave()">
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-6">
+                    <span class="fs-6"*ngIf="rf.name.invalid && (rf.name.dirty || rf.name.touched)">
+                        <span *ngIf="rf.name.errors.required">El nombre es requerido.</span>
+                        <span *ngIf="rf.name.errors.minlength">El nombre debe tener más de dos letras.</span>
+                    </span>
+                </div>
+                <div class="col-6">
+                    <span class="fs-6"*ngIf="rf.lastName.invalid && (rf.lastName.dirty || rf.lastName.touched)">
+                        <span *ngIf="rf.lastName.errors.required">El apellido es requerido.</span>
+                        <span *ngIf="rf.name.errors.minlength">El apellido debe tener más de dos letras.</span>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <input class="form-control shadow-none" type="text" placeholder="Nombre" formControlName="name">
+                </div>
+                <div class="col-6">
+                    <input class="form-control shadow-none" type="text" placeholder="Apellido" formControlName="lastName" >
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <span class="fs-6"*ngIf="rf.email.invalid && (rf.email.dirty || rf.email.touched)">
+                        <span *ngIf="rf.email.errors.required">El email es requerido.</span>
+                        <span *ngIf="rf.email.errors.pattern">El email es invalido.</span>
+                    </span>
+                    <input type="email" class="form-control shadow-none" placeholder="Correo electrónico" formControlName="email" >
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="" *ngIf="((registrationForm.errors != null) && (rf.password.dirty || rf.password.touched))">
+                        <span *ngIf="rf.password.errors?.required">La contraseña es requerida.<br></span>
+                        <div *ngIf="!rf.password.errors?.required">
+                            <span *ngIf="registrationForm.hasError('length')">La contraseña debe tener más de seis letras.<br></span>
+                            <span *ngIf="registrationForm.hasError('mayus')">La contraseña debe tener al menos una mayúscula.<br></span>
+                            <span *ngIf="registrationForm.hasError('minus')">La contraseña debe tener al menos una minúscula.<br></span>
+                            <span *ngIf="registrationForm.hasError('num')">La contraseña debe tener al menos un número.<br></span>
+                            <span *ngIf="registrationForm.hasError('sim')">La contraseña debe tener al menos un símbolo.<br></span>
+                            <span *ngIf="registrationForm.hasError('space')">La contraseña no debe tener espacios.</span>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control shadow-none" placeholder="Contraseña" formControlName="password">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col"> 
+                    <input type="password" class="form-control shadow-none" placeholder="Confirmar contraseña" formControlName="matchPassword">
+                </div>
+                <span *ngIf="registrationForm.hasError('notSame')">
+                    Las contraseñas no coinciden.
+                </span> 
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <span class="fs-6" *ngIf="registrationForm.hasError('invalidDate') || (rf.bornDate.dirty || rf.bornDate.touched)">
+                        <span *ngIf="!rf.bornDate.pristine && registrationForm.hasError('invalidDate')">Fecha invalida.<br></span>
+                    </span>	
+                    <span class="fs-6">Fecha de nacimiento</span>
+                    <input type="date" class="form-control shadow-none" formControlName="bornDate">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <span class="fs-6"*ngIf="rf.sex.invalid && (rf.sex.dirty || rf.sex.touched)">
+                    <span *ngIf="rf.sex.errors.required">Elija una opción.</span>
+                </span>
+                <span class="fs-6">Sexo</span>
+                <div id="divOpciones" class="d-flex justify-content-between">
+                    <input type="radio" formControlName="sex"  id="hombre" value="Hombre" class="btn-check" [checked]>
+                    <label class="btn btn-outline-danger radio-genero" for="hombre">Hombre</label>
+                    
+                    <input type="radio" formControlName="sex"  id="mujer" value="Mujer" class="btn-check">
+                    <label class="btn btn-outline-danger radio-genero" for="mujer">Mujer</label>
+                    
+                    <input type="radio" formControlName="sex"  id="otro" value="Otro" class="btn-check">
+                    <label class="btn btn-outline-danger radio-genero" for="otro">Otro</label>
+                </div>
+            </div>
+            <div class="row mt-5 d-flex justify-content-center">
+                <a routerLink="/login" class="col-4 btn btn-info text-white w-25 shadow-none me-3" style="border-radius: .5em;">
+                    Login
+                </a>					
+                <input type="submit" class="col-4 btn btn-crear text-white w-50 shadow-none" value="Registrarte">
+                                    
+            </div>
+        </div>
+    </form>
+</div>

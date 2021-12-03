@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         this.errMsj = err.error.message;
-        alert(this.errMsj);
+        //alert(this.errMsj);
       }
     );
   }

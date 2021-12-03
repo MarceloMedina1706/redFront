@@ -33,6 +33,14 @@ export class UserServiceService {
     return this.httpClient.post<boolean>(this._postURL + `verFollow/${id}`, null);
   }
 
+  getFollowingUsers(id: number): Observable<User[]>{
+    return this.httpClient.post<User[]>(this._postURL + 'getFollowing', id);
+  }
+
+  getFollowesUsers(id: number): Observable<User[]>{
+    return this.httpClient.post<User[]>(this._postURL + 'getFollowers', id);
+  }
+
   getSearch(search: string): Observable<User[]>{
     return this.httpClient.post<User[]>(this._postURL + 'search', search);
   }

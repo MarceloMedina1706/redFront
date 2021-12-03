@@ -5,7 +5,8 @@
 <app-publicar (postEvent)="receivePost($event)"></app-publicar>
 
 <app-post *ngFor="let post of posts" 
-            [post] = "post"
+            [post]="post"
+            [actions]="actions"
             (displayEvent)="receiveDisplay($event)"
             (updEvent)="receiveDisplay($event)"
             (delEvent)="receiveDel($event)"></app-post>
