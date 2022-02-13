@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row mt-5 d-flex justify-content-center">
+        <div class="col-4 mt-4 div-img">
+            <p>IMAGEN LOGO</p>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <p class="text-dark fs-3 fw-bold">{{message}}</p>
+        </div>
+    </div>
+    <div class="w-100">
+        <div *ngIf="status==0; then insertVerificationCode"></div>
+        <div *ngIf="status==1; then resendTemplate"></div>
+        <div *ngIf="status==2; then errorTemplate"></div>
+    </div>
+    
+    <div class="row d-flex justify-content-center mt-5">
+        <a routerLink="/login" class="btn btn-secondary w-25 text-white">
+            Login
+        </a>
+    </div>
+</div>
+
+<ng-template #insertVerificationCode>
+    <div class="row">
+        <form class="col" [formGroup]="confirmCodeForm" (ngSubmit)="onSubmit()">
+
+            <div class="d-flex justify-content-center">
+                <label class="fs-4">Ingresa el código que te enviamos</label>
+            </div>
+
+            <div class="d-flex justify-content-center" *ngIf="((confirmCodeForm.errors != null) && (ccf.confirmCode.dirty || ccf.confirmCode.touched))">
+                <span class="text-danger">Código invalido.</span>
+            </div>
+            
+            <div class="d-flex justify-content-center">
+                <input type="text" class="form-control w-25 shadow-none" autocomplete="off" formControlName="confirmCode">
+            </div>
+            <div class="row mt-4 d-flex justify-content-center">
+                <input type="submit" class="btn btn-success w-25 shadow-none" value="Enviar">
+            </div>
+            
+        </form>
+    </div>
+</ng-template>
+<ng-template #resendTemplate>
+    <div class="d-flex justify-content-center">
+        <label class="fs-4">Reenviar código</label>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary shadow-none" (click)="resend()">Reenviar</button>
+    </div>
+    <div *ngIf="spinner" class="d-flex justify-content-center">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>
+<ng-template #errorTemplate>
+    <div class="d-flex justify-content-center">
+        <label class="fs-4">Error: {{ errorStatus }}</label>
+    </div>
+</ng-template>

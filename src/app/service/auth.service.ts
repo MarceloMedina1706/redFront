@@ -19,8 +19,16 @@ export class AuthService {
     return this.httpClient.post<JwtDTO>(this.authURL + "login", loginUser);
   }
 
-  public registration(registrationUser: RegistrationUser): Observable<boolean>{
-    return this.httpClient.post<boolean>(this.authURL + "registration", registrationUser);
+  public registration(registrationUser: RegistrationUser): Observable<any>{
+    return this.httpClient.post<any>(this.authURL + "new", registrationUser);
+  }
+
+  public sendConfirmCode(code: string): Observable<boolean>{
+    return this.httpClient.post<boolean>(this.authURL + "confirm", code);
+  }
+
+  public resendConfirmCode(code: string): Observable<boolean>{
+    return this.httpClient.post<boolean>(this.authURL + "resend", code);
   }
 
   public refresh(dto: JwtDTO): Observable<JwtDTO>{

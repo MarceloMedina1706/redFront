@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 import { RegistrationUser } from 'src/app/model/registration-user';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -22,11 +23,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class RegistrationComponent implements OnInit {
 
   public registrationForm: FormGroup;
+  spinner: boolean = false;
 
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private authService: AuthService
   ) {
     this.registrationForm = this.fb.group({
@@ -46,7 +49,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createForm() {
+  /*createForm() {
     return new FormGroup({
       name: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3)])),
       lastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -56,7 +59,7 @@ export class RegistrationComponent implements OnInit {
       bornDate: new FormControl(''),
       sex: new FormControl('', [Validators.required])
     });
-  }
+  }*/
 
   onSave(): void {
     if(this.registrationForm.valid){
@@ -67,13 +70,17 @@ export class RegistrationComponent implements OnInit {
                                          this.registrationForm.get('bornDate').value,
                                          this.registrationForm.get('sex').value);      
       
-      alert("Usuario registrado correctamente.");
-
-      /*this.authService.registration(regUser).subscribe(
+      /*alert("Usuario registrado correctamente.");
+      this.router.navigate(['/verification/save']);*/
+      this.spinner = true;
+      this.authService.registration(regUser).subscribe(
         data => {
-          if(data) alert("Usuario registrado correctamente.");
+          if(data){
+            alert("Usuario registrado correctamente.");
+            this.router.navigate(['/verification/save']);
+          } 
         }
-      );*/
+      );
       
     }else{
       alert("Revise los campos.\n");
@@ -105,7 +112,7 @@ export class RegistrationComponent implements OnInit {
     }
 
 
-    console.log(val[0] +" "+val[1]+" "+val[2]+" "+val[3]+" "+val[4]+" "+val[5]);
+    //console.log(val[0] +" "+val[1]+" "+val[2]+" "+val[3]+" "+val[4]+" "+val[5]);
 
     let validation = {
       mayus: val[0],

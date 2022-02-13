@@ -3,7 +3,7 @@ export class RegistrationUser {
     lastName: string;
     email: string;
     password: string;
-    bornDate: string;
+    born: string;
     sex: string;
 
     constructor(name: string, lastName: string, email: string, password: string, 
@@ -13,7 +13,7 @@ export class RegistrationUser {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.bornDate = bornDate;
+        this.born = bornDate;
         this.sex = sex;
     }
 }

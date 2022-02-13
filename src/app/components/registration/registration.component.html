@@ -86,12 +86,16 @@
                     <label class="btn btn-outline-danger radio-genero" for="otro">Otro</label>
                 </div>
             </div>
-            <div class="row mt-5 d-flex justify-content-center">
+            <div *ngIf="!spinner" class="row mt-5 d-flex justify-content-center">
                 <a routerLink="/login" class="col-4 btn btn-info text-white w-25 shadow-none me-3" style="border-radius: .5em;">
                     Login
                 </a>					
-                <input type="submit" class="col-4 btn btn-crear text-white w-50 shadow-none" value="Registrarte">
-                                    
+                <input type="submit" class="col-4 btn btn-crear text-white w-50 shadow-none" value="Registrarte">   
+            </div>
+            <div *ngIf="spinner" class="row mt-5 d-flex justify-content-center">
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
         </div>
     </form>

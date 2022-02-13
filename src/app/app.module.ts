@@ -26,6 +26,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ResultadoComponent } from './components/resultado/resultado.component';
 import { ItemResultadoComponent } from './components/item-resultado/item-resultado.component';
 import { FollowSectionComponent } from './components/follow-section/follow-section.component';
+import { AvisoComponent } from './components/aviso/aviso.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { FollowSectionComponent } from './components/follow-section/follow-secti
     ModalComponent,
     ResultadoComponent,
     ItemResultadoComponent,
-    FollowSectionComponent
+    FollowSectionComponent,
+    AvisoComponent
   ],
   imports: [
     BrowserModule,

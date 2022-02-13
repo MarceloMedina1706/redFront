@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AvisoComponent } from './components/aviso/aviso.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { ModalComponent } from './components/modal/modal.component';
@@ -12,6 +13,7 @@ import { UserGuard } from './guards/user.guard';
 const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [LoginGuardGuard]},
   {path: 'registration', component: RegistrationComponent, canActivate: [LoginGuardGuard]},
+  {path: 'verification/:msg', component: AvisoComponent, canActivate: [LoginGuardGuard]},  
   {path: 'inicio', component: InicioComponent, canActivate: [UserGuard]},
   {path: '', component: InicioComponent, canActivate: [UserGuard]},
   {path: 'user', component: UserComponent, canActivate: [UserGuard]},
